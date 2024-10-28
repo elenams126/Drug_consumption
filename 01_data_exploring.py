@@ -2,7 +2,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
- 
+   
 # Load the dataset
 data = pd.read_csv('drug_consumption.data', sep=',', header=None)
 
