@@ -1,8 +1,10 @@
 # Import necessary libraries
 import pandas as pd
+import numpy as np
 
 # Load the raw dataset
 data = pd.read_csv('drug_consumption.data', sep=',', header=None)
+numeric_data = data.select_dtypes(include=[np.number])
 
 # Define column names (adding 'UnknownColumn' for the extra column)
 columns = [
@@ -13,6 +15,15 @@ columns = [
     'Ketamine', 'Legal_highs', 'LSD', 'Methadone', 'MMushrooms', 'Nicotine', 'VSA',
     'UnknownColumn'  # Adding the missing column name
 ]
+
+data.ffill(inplace=True)
+
+data_mean = numeric_data.mean()
+data_std = numeric_data.std(axis=0)
+
+summary_stats = pd.DataFrame({'Mean': data_mean, 'Standard Deviation': data_std})
+
+summary_stats
 
 # Assign the new column names
 data.columns = columns
