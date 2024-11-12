@@ -16,6 +16,8 @@ columns = [
     'UnknownColumn'  # Adding the missing column name
 ]
 
+print(data)
+
 data.ffill(inplace=True)
 
 data_mean = numeric_data.mean()
